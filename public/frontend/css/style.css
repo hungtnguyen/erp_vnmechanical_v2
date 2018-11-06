@@ -1,0 +1,15 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.project .project-details .title {
+    font-family: sans-serif;
+}
+h1, h2, .h1, .h2 {
+    font-family: "Helvetica Neue",sans-serif;
+}
+.menuzord-brand img {
+    max-height: 55px;
+}
+.menuzord-menu > li {
+    padding: 20px 0;
+}
