@@ -1,0 +1,38 @@
+<div class="sidebar sidebar-left mt-sm-30">
+    <% render 'erp/vnmechanical/frontend/modules/blog/search_box' %>
+    <% if !@categories.empty? %>
+    <div class="widget">
+        <h3 class="widget-title line-bottom font-16">Chủ đề</h3>
+        <div class="categories">
+            <ul class="list list-border angle-double-right">
+                <% @categories.each do |cat| %>
+                    <li>
+                        <%= link_to cat.name, erp_vnmechanical.blog_with_category_path(url_friendly(cat.name), cat.id),
+                        class: "#{'active' if (defined?(cat_id) and cat.id == cat_id) or (cat.id == params[:cat_id].to_i)}" %>
+                        <span>(<%= cat.get_articles.count %>)</span>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+    <% end %>
+    <div class="widget">
+        <h3 class="widget-title line-bottom font-16">Tin mới khác</h3>
+        <div class="latest-posts">
+            <% @newest_articles.each do |post| %>
+            <article class="post media-post clearfix pb-0 mb-10">
+                <a class="post-thumb" href="<%= blog_link(post) %>">
+                    <!--<img src="https://placehold.it/75x75" alt="">-->
+                    <%= image_tag post.image.small, alt: post.name %><!--70x80-->
+                </a>
+                <div class="post-right">
+                    <h4 class="post-title mt-0 mb-5">
+                        <%= link_to post.name.truncate(55, omission: '...'), blog_link(post) %>
+                    </h4>
+                    <p><%= short_text(post.content, 10) %> <%= link_to "[...]", blog_link(post) %></p>
+                </div>
+            </article>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,8 @@ Erp::Vnmechanical::Engine.routes.draw do
   get "gioi-thieu.html" => "frontend/information#about_us", as: :about_us
   
   get "tin-tuc.html" => "frontend/blog#index", as: :blog
-  get "tin-tuc/:title-n(:blog_id).html" => "frontend/blog#detail", as: :blog_detail
+  get "tin-tuc/:title-bl(:blog_id).html" => "frontend/blog#detail", as: :blog_detail
+  get "tin-tuc/chu-de/:title-ctg(:cat_id).html" => "frontend/blog#index", as: :blog_with_category
   
   get "tuyen-dung.html" => "frontend/recruitment#index", as: :recruitment
   get "tuyen-dung/chi-tiet.html" => "frontend/recruitment#detail", as: :recruitment_detail

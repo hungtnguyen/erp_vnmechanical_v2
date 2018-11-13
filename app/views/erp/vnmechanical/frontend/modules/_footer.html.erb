@@ -3,13 +3,43 @@
         <div class="row border-bottom-black">
             <div class="col-sm-6 col-md-3">
                 <div class="widget dark">
+                    <% @company_info = Erp::Contacts::Contact.get_main_contact %>
                     <img class="mt-10 mb-20" alt="" src="/frontend/images/logo-wide-white-footer.png">
-                    <p>203, Envato Labs, Behind Alis Steet, Melbourne, Australia.</p>
-                    <ul class="list-inline mt-5">
-                        <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-gray" href="#">123-456-789</a> </li>
-                        <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a class="text-gray" href="#">contact@yourdomain.com</a> </li>
-                        <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-colored mr-5"></i> <a class="text-gray" href="#">www.yourdomain.com</a> </li>
-                    </ul>
+                    <% if !@company_info.nil? %>
+                        <% if @company_info.note.present? %>
+                            <p><%= @company_info.note %></p>
+                        <% end %>
+                        <ul class="list-inline mt-5">
+                            <li class="m-0 pl-10 pr-10">
+                                <i class="fa fa-home text-theme-colored mr-5"></i> <span class="font-weight-600"><%= @company_info.contact_name %></span>
+                            </li>
+                            <% if display_contact_address(@company_info).length > 0 %>
+                            <li class="m-0 pl-10 pr-10">
+                                <i class="fa fa-map-marker text-theme-colored mr-5"></i> <%= display_contact_address(@company_info) %>
+                            </li>
+                            <% end %>
+                            <% if @company_info.phone.present? %>
+                            <li class="m-0 pl-10 pr-10">
+                                <i class="fa fa-phone text-theme-colored mr-5"></i> <%= link_to @company_info.phone, "tel:#{@company_info.phone}", class: 'text-gray' %>
+                            </li>
+                            <% end %>
+                            <% if @company_info.hotline.present? %>
+                            <li class="m-0 pl-10 pr-10">
+                                <i class="fa fa-mobile text-theme-colored mr-5"></i> <%= link_to @company_info.hotline, "tel:#{@company_info.hotline}", class: 'text-gray' %>
+                            </li>
+                            <% end %>
+                            <% if @company_info.email.present? %>
+                            <li class="m-0 pl-10 pr-10">
+                                <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <%= mail_to @company_info.email, @company_info.email, class: 'text-gray' %>
+                            </li>
+                            <% end %>
+                            <% if @company_info.website.present? %>
+                            <li class="m-0 pl-10 pr-10">
+                                <i class="fa fa-globe text-theme-colored mr-5"></i> <%= @company_info.website %>
+                            </li>
+                            <% end %>
+                        </ul>
+                    <% end %>
                     <ul class="social-icons icon-bordered icon-circled icon-sm mt-15">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -22,85 +52,66 @@
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="widget dark">
-                    <h5 class="widget-title line-bottom">Latest News</h5>
-                    <div class="latest-posts">
-                        <article class="post media-post clearfix pb-0 mb-10">
-                            <a href="#" class="post-thumb"><img alt="" src="/frontend/images/blog/ln1.jpg"></a>
-                            <div class="post-right">
-                                <h5 class="post-title mt-0 mb-5"><a href="#">Sustainable Construction</a></h5>
-                                <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                            </div>
-                        </article>
-                        <article class="post media-post clearfix pb-0 mb-10">
-                            <a href="#" class="post-thumb"><img alt="" src="/frontend/images/blog/ln2.jpg"></a>
-                            <div class="post-right">
-                                <h5 class="post-title mt-0 mb-5"><a href="#">Industrial Coatings</a></h5>
-                                <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                            </div>
-                        </article>
-                        <article class="post media-post clearfix pb-0 mb-10">
-                            <a href="#" class="post-thumb"><img alt="" src="/frontend/images/blog/ln3.jpg"></a>
-                            <div class="post-right">
-                                <h5 class="post-title mt-0 mb-5"><a href="#">Storefront Installations</a></h5>
-                                <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="widget dark">
-                    <h5 class="widget-title line-bottom">Useful Links</h5>
+                    <h5 class="widget-title line-bottom">Liên kết nhanh</h5>
                     <ul class="list angle-double-right list-border">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">project</a></li>
-                        <li><a href="#">Latest News</a></li>
-                        <li><a href="#">Gallery</a></li>
+                        <li><a href="<%= erp_vnmechanical.about_us_path %>">Về chúng tôi</a></li>
+                        <li><a href="<%= erp_vnmechanical.blog_path %>">Tin tức</a></li>
+                        <li><a href="<%= erp_vnmechanical.gallery_path %>">Hình ảnh</a></li>
+                        <li><a href="<%= erp_vnmechanical.recruitment_path %>">Tuyển dụng</a></li>
+                        <li><a href="<%= erp_vnmechanical.contact_us_path %>">Liên hệ</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="widget dark">
-                    <h5 class="widget-title line-bottom">Quick Contact</h5>
-                    <form id="footer_quick_contact_form" name="footer_quick_contact_form" class="quick-contact-form" action="includes/quickcontact.php" method="post">
-                        <div class="form-group">
-                            <input id="form_email" name="form_email" class="form-control" type="text" required="" placeholder="Enter Email">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="form_message" name="form_message" class="form-control" required="" placeholder="Enter Message" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="" />
-                            <button type="submit" class="btn btn-default btn-transparent btn-xs btn-flat mt-0" data-loading-text="Please wait...">Send Message</button>
-                        </div>
+                    <h5 class="widget-title line-bottom">Từ khóa</h5>
+                    <div class="tags">
+                        <a href="#">băng tải</a>
+                        <a href="#">băng chuyền</a>
+                        <a href="#">máy đóng gói</a>
+                        <a href="#">máy chiết rót</a>
+                        <a href="#">máy nông nghiệp</a>
+                        <a href="#">thiết bị cơ khí</a>
+                        <a href="#">phụ tùng thay thế</a>
+                        <a href="#">tư vấn thiết kế</a>
+                        <a href="#">cơ khí</a>
+                        <a href="#">chế tạo máy</a>
+                        <a href="#">động lực học</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="widget dark">
+                    <h5 class="widget-title line-bottom">Đăng ký nhận tin</h5>
+                    <h5 class="subscribe-title font-13 text-gray">Để đăng ký nhận bản tin, cho tới khi có thêm thông báo, vui lòng nhập thông tin vào ô bên dưới và chọn "Đăng ký".</h5>
+                    <form id="mailchimp-subscription-form" class="newsletter-form mt-10">
+                      <div class="input-group">
+                        <input type="email" id="mce-EMAIL" data-height="34px" class="form-control input-sm" placeholder="Nhập địa chỉ email nhận tin" name="EMAIL" value="">
+                        <span class="input-group-btn">
+                          <button type="submit" class="btn btn-colored btn-theme-colored text-white btn-xs m-0" data-height="34px">Đăng ký</button>
+                        </span>
+                      </div>
                     </form>
 
-                    <!-- Quick Contact Form Validation-->
+                    <!-- Mailchimp Subscription Form Validation-->
                     <script type="text/javascript">
-                        $("#footer_quick_contact_form").validate({
-                            submitHandler: function(form) {
-                                var form_btn = $(form).find('button[type="submit"]');
-                                var form_result_div = '#form-result';
-                                $(form_result_div).remove();
-                                form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-                                var form_btn_old_msg = form_btn.html();
-                                form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-                                $(form).ajaxSubmit({
-                                    dataType: 'json',
-                                    success: function(data) {
-                                        if (data.status == 'true') {
-                                            $(form).find('.form-control').val('');
-                                        }
-                                        form_btn.prop('disabled', false).html(form_btn_old_msg);
-                                        $(form_result_div).html(data.message).fadeIn('slow');
-                                        setTimeout(function() {
-                                            $(form_result_div).fadeOut('slow')
-                                        }, 6000);
-                                    }
-                                });
-                            }
+                        $('#mailchimp-subscription-form').ajaxChimp({
+                            callback: mailChimpCallBack,
+                            url: '//thememascot.us9.list-manage.com/subscribe/post?u=a01f440178e35febc8cf4e51f&amp;id=49d6d30e1e'
                         });
+                    
+                        function mailChimpCallBack(resp) {
+                            // Hide any previous response text
+                            var $mailchimpform = $('#mailchimp-subscription-form'),
+                                $response = '';
+                            $mailchimpform.children(".alert").remove();
+                            if (resp.result === 'success') {
+                                $response = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
+                            } else if (resp.result === 'error') {
+                                $response = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
+                            }
+                            $mailchimpform.prepend($response);
+                        }
                     </script>
                 </div>
             </div>

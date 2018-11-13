@@ -2,14 +2,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
+                <% @company_info = Erp::Contacts::Contact.get_main_contact %>
                 <div class="widget no-border m-0">
                     <ul class="list-inline xs-text-center text-white mt-5">
+                        <% if @company_info.hotline.present? %>
                         <li class="m-0 pl-10 pr-10">
-                            <i class="fa fa-phone text-theme-colored"></i> <a href="tel:0947748895" class="text-white"> 0947 748 895</a>
+                            <i class="fa fa-phone text-theme-colored"></i> <%= link_to @company_info.phone, "tel:#{@company_info.phone}", class: 'text-white' %>
                         </li>
+                        <% end %>
+                        <% if @company_info.email.present? %>
                         <li class="m-0 pl-10 pr-10">
-                            <i class="fa fa-envelope-o text-theme-colored"></i> <a href="mailto:vnmtechnology@gmail.com" class="text-white"> vnmtechnology@gmail.com</a>
+                            <i class="fa fa-envelope-o text-theme-colored"></i> <%= mail_to @company_info.email, @company_info.email, class: 'text-white' %>
                         </li>
+                        <% end %>
                     </ul>
                 </div>
             </div>

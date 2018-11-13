@@ -21,84 +21,24 @@
     <div class="container pb-30">
         <div class="section-content">
             <div class="row multi-row-clearfix">
+                <% @services.each do |service| %>
                 <div class="col-sm-6 col-md-4">
                     <div class="project mb-30">
                         <div class="thumb">
-                            <img class="img-fullwidth" alt="" src="/frontend/images/about/1.jpg">
+                            <%= image_tag service.image.thumb_360_210, alt: service.name, class: 'img-fullwidth' %>
                             <div class="hover-link">
-                                <a href="#"><i class="flaticon-attachment"></i></a>
+                                <a href="<%= service_link(service) %>"
+                                    class="btn btn-default btn-transparent btn-sm">
+                                    <i class="flaticon-attachment"></i> Xem chi tiết
+                                </a>
                             </div>
                         </div>
                         <div class="project-details p-15 pt-10 pb-10">
-                            <h2 class="title font-weight-700 font-15 mt-5 mb-5">Tư vấn</h2>
+                            <h2 class="title font-weight-700 font-15 mt-5 mb-5"><%= service.name %></h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="project mb-30">
-                        <div class="thumb">
-                            <img class="img-fullwidth" alt="" src="/frontend/images/about/2.jpg">
-                            <div class="hover-link">
-                                <a href="#"><i class="flaticon-attachment"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-details p-15 pt-10 pb-10">
-                            <h2 class="title font-weight-700 font-15 mt-5 mb-5">Nâng cấp</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="project mb-30">
-                        <div class="thumb">
-                            <img class="img-fullwidth" alt="" src="/frontend/images/about/3.jpg">
-                            <div class="hover-link">
-                                <a href="#"><i class="flaticon-attachment"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-details p-15 pt-10 pb-10">
-                            <h2 class="title font-weight-700 font-15 mt-5 mb-5">Hỗ trợ kỹ thuật</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="project mb-30">
-                        <div class="thumb">
-                            <img class="img-fullwidth" alt="" src="/frontend/images/about/4.jpg">
-                            <div class="hover-link">
-                                <a href="#"><i class="flaticon-attachment"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-details p-15 pt-10 pb-10">
-                            <h2 class="title font-weight-700 font-15 mt-5 mb-5">Thay thế phụ tùng</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="project mb-30">
-                        <div class="thumb">
-                            <img class="img-fullwidth" alt="" src="/frontend/images/about/7.jpg">
-                            <div class="hover-link">
-                                <a href="#"><i class="flaticon-attachment"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-details p-15 pt-10 pb-10">
-                            <h2 class="title font-weight-700 font-15 mt-5 mb-5">Bảo trì</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="project mb-30">
-                        <div class="thumb">
-                            <img class="img-fullwidth" alt="" src="/frontend/images/about/6.jpg">
-                            <div class="hover-link">
-                                <a href="#"><i class="flaticon-attachment"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-details p-15 pt-10 pb-10">
-                            <h2 class="title font-weight-700 font-15 mt-5 mb-5">Lắp đặt - Chạy thử - Đào tạo</h2>
-                        </div>
-                    </div>
-                </div>
+                <% end %>
             </div>
         </div>
     </div>

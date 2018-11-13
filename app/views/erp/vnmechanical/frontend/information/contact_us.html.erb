@@ -1,150 +1,152 @@
-<div class="main-content">
+<% title "Trợ giúp và liên hệ" %>
 
-    <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/frontend/images/bg/bg11.jpg">
-        <div class="container pt-10 pb-10">
-            <!-- Section Content -->
-            <div class="section-content pt-10">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="title text-white">Liên hệ</h3>
-                        <ol class="breadcrumb text-black mt-10">
-                            <li><a href="<%= erp_vnmechanical.root_path %>">Trang chủ</a></li>
-                            <li class="active text-theme-colored">Liên hệ & Góp ý</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Divider: Contact -->
-    <section class="divider">
-        <div class="container">
-            <div class="row pt-30">
-                <div class="col-md-7">
-                    <div class="row">
-                        <h3 class="line-bottom mt-0 mb-50 ml-15">Thông tin liên hệ</h3>
-                        <div class="col-md-12">
-                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque</p>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="icon-box media bg-deep p-30 mb-20"> <a class="media-left pull-left flip" href="#"> <i class="pe-7s-map-2 text-theme-colored"></i></a>
-                                <div class="media-body">
-                                    <h5 class="mt-0">CƠ KHÍ VNMECHANICAL</h5>
-                                    <p>Địa chỉ: Số 123 Lê Văn Khương, P. Tân Thới An, Quận 12, TP. Hồ Chí Minh</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6">
-                            <div class="icon-box media bg-deep p-30 mb-20"> <a class="media-left pull-left flip" href="#"> <i class="pe-7s-call text-theme-colored"></i></a>
-                                <div class="media-body">
-                                    <h5 class="mt-0">Điện thoại (Mr. Trí)</h5>
-                                    <p>0947 748 895</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6">
-                            <div class="icon-box media bg-deep p-30 mb-20"> <a class="media-left pull-left flip" href="#"> <i class="pe-7s-mail text-theme-colored"></i></a>
-                                <div class="media-body">
-                                    <h5 class="mt-0">Hộp thư</h5>
-                                    <p>vnmtechnology@gmail.com</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <h3 class="line-bottom mt-0 mb-30">Gửi yêu cầu trợ giúp hoặc góp ý</h3>
-
-                    <!-- Contact Form -->
-                    <form id="contact_form" name="contact_form" class="" action="includes/sendmail.php" method="post">
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Họ & tên <small>*</small></label>
-                                    <input name="form_name" class="form-control" type="text" placeholder="Nhập họ và tên" required="">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Địa chỉ email <small>*</small></label>
-                                    <input name="form_email" class="form-control required email" type="email" placeholder="Nhập địa chỉ email">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Chủ đề <small>*</small></label>
-                                    <input name="form_subject" class="form-control required" type="text" placeholder="Nhập chủ đề của tin nhắn">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Số điện thoại</label>
-                                    <input name="form_phone" class="form-control" type="text" placeholder="Nhập số điện thoại">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Lời nhắn</label>
-                            <textarea name="form_message" class="form-control required" rows="5" placeholder="Vui lòng cung cấp nội dung lời nhắn của bạn tại đây"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input name="form_botcheck" class="form-control" type="hidden" value="" />
-                            <button type="submit" class="btn btn-dark btn-theme-colored btn-flat mr-5" data-loading-text="Vui lòng chờ...">Gửi tin nhắn của bạn</button>
-                            <button type="reset" class="btn btn-default btn-flat btn-theme-colored">Nhập lại</button>
-                        </div>
-                    </form>
-
-                    <!-- Contact Form Validation-->
-                    <script type="text/javascript">
-                        $("#contact_form").validate({
-                            submitHandler: function(form) {
-                                var form_btn = $(form).find('button[type="submit"]');
-                                var form_result_div = '#form-result';
-                                $(form_result_div).remove();
-                                form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-                                var form_btn_old_msg = form_btn.html();
-                                form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-                                $(form).ajaxSubmit({
-                                    dataType: 'json',
-                                    success: function(data) {
-                                        if (data.status == 'true') {
-                                            $(form).find('.form-control').val('');
-                                        }
-                                        form_btn.prop('disabled', false).html(form_btn_old_msg);
-                                        $(form_result_div).html(data.message).fadeIn('slow');
-                                        setTimeout(function() {
-                                            $(form_result_div).fadeOut('slow')
-                                        }, 6000);
-                                    }
-                                });
-                            }
-                        });
-                    </script>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Divider: Google Map -->
-    <section>
-        <div class="container-fluid pt-0 pb-0">
+<!-- Section: inner-header -->
+<section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/frontend/images/bg/bg11.jpg">
+    <div class="container pt-10 pb-10">
+        <!-- Section Content -->
+        <div class="section-content pt-10">
             <div class="row">
-
-                <!-- Google Map HTML Codes -->
-                <div id="map-canvas-multipointer" data-mapstyle="default" data-height="500" data-zoom="13" data-marker="images/map-marker.png">
+                <div class="col-md-12">
+                    <h1 class="title text-white">Liên hệ</h1>
+                    <ul class="breadcrumb white">
+                        <li><a href="<%= erp_vnmechanical.root_path %>">Trang chủ</a></li>
+                        <li class="active">Liên hệ & Góp ý</li>
+                    </ul>
                 </div>
-                <!-- Google Map Javascript Codes -->
-                <script src="http://maps.google.com/maps/api/js?key=AIzaSyAYWE4mHmR9GyPsHSOVZrSCOOljk8DU9B4"></script>
-                <script src="/frontend/js/google-map-init-multilocation.js"></script>
-
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
+
+<!-- Divider: Contact -->
+<section class="divider">
+    <div class="container">
+        <div class="row pt-30">
+            <div class="col-md-7">
+                <div class="row">
+                    <h3 class="line-bottom mt-0 mb-50 ml-15">Thông tin liên hệ</h3>
+                    <% if !@company_info.nil? %>
+                    <!--<div class="col-md-12">
+                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque</p>
+                    </div>-->
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="icon-box media bg-deep p-30 mb-20"> <a class="media-left pull-left flip" href="#"> <i class="pe-7s-map-2 text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h5 class="mt-0"><%= @company_info.contact_name %></h5>
+                                <% if display_contact_address(@company_info).present? %>
+                                <p>Địa chỉ: <%= display_contact_address(@company_info) %></p>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="icon-box media bg-deep p-30 mb-20"> <a class="media-left pull-left flip" href="#"> <i class="pe-7s-call text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Điện thoại</h5>
+                                <p><%= link_to @company_info.phone, "tel:#{@company_info.phone}" %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="icon-box media bg-deep p-30 mb-20"> <a class="media-left pull-left flip" href="#"> <i class="pe-7s-mail text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Hộp thư</h5>
+                                <p><%= mail_to @company_info.email, @company_info.email %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h3 class="line-bottom mt-0 mb-30">Gửi yêu cầu trợ giúp hoặc góp ý</h3>
+
+                <!-- Contact Form -->
+                <%= form_for '', url: erp_vnmechanical.contact_us_path, html: {class: "contact_form", id: "contact_form", name: 'contact_form', autocomplete: "off"} do |f| %>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Họ & tên <small>*</small></label>
+                                <input name="contact[name]" class="form-control" type="text" placeholder="Nhập họ và tên" required="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Địa chỉ email <small>*</small></label>
+                                <input name="contact[email]" class="form-control required email" type="email" placeholder="Nhập địa chỉ email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Chủ đề <small>*</small></label>
+                                <input name="contact[subject]" class="form-control required" type="text" placeholder="Nhập chủ đề của tin nhắn">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <input name="contact[phone]" class="form-control" type="text" placeholder="Nhập số điện thoại">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Lời nhắn</label>
+                        <textarea name="msg[message]" class="form-control required" rows="5" placeholder="Vui lòng cung cấp nội dung lời nhắn của bạn tại đây"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                        <button type="submit" class="btn btn-dark btn-theme-colored btn-flat mr-5" data-loading-text="Vui lòng chờ...">Gửi tin nhắn của bạn</button>
+                        <button type="reset" class="btn btn-default btn-flat btn-theme-colored">Nhập lại</button>
+                    </div>
+                <% end %>
+
+                <!-- Contact Form Validation-->
+                <script type="text/javascript">
+                    $("#contact_form").validate({
+                        submitHandler: function(form) {
+                            var form_btn = $(form).find('button[type="submit"]');
+                            var form_result_div = '#form-result';
+                            $(form_result_div).remove();
+                            form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                            var form_btn_old_msg = form_btn.html();
+                            form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+                            $(form).ajaxSubmit({
+                                dataType: 'json',
+                                success: function(data) {
+                                    if (data.status == 'true') {
+                                        $(form).find('.form-control').val('');
+                                    }
+                                    form_btn.prop('disabled', false).html(form_btn_old_msg);
+                                    $(form_result_div).html(data.message).fadeIn('slow');
+                                    setTimeout(function() {
+                                        $(form_result_div).fadeOut('slow')
+                                    }, 6000);
+                                }
+                            });
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Divider: Google Map -->
+<section>
+    <div class="container-fluid pt-0 pb-0">
+        <div class="row">
+
+            <!-- Google Map HTML Codes -->
+            <div id="map-canvas-multipointer" data-mapstyle="default" data-height="500" data-zoom="13" data-marker="images/map-marker.png">
+            </div>
+            <!-- Google Map Javascript Codes -->
+            <script src="http://maps.google.com/maps/api/js?key=AIzaSyAYWE4mHmR9GyPsHSOVZrSCOOljk8DU9B4"></script>
+            <script src="/frontend/js/google-map-init-multilocation.js"></script>
+
+        </div>
+    </div>
+</section>

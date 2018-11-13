@@ -428,6 +428,7 @@ ul.list.theme-colored.check li:before,
 /* menuzord */
 .menuzord .menuzord-menu > li.active > a,
 .menuzord .menuzord-menu > li:hover > a,
+.menuzord .menuzord-menu ul.dropdown li.active > a,
 .menuzord .menuzord-menu ul.dropdown li:hover > a {
   background: #41aaaa ;
   color: #fff;

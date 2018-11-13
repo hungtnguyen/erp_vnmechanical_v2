@@ -7,9 +7,42 @@ body {
 h1, h2, .h1, .h2 {
     font-family: "Helvetica Neue",sans-serif;
 }
+h3, h4, h5, h6, .h3, .h4, .h5, .h6 {
+    font-family: sans-serif;
+}
 .menuzord-brand img {
-    max-height: 55px;
+    max-height: 50px;
 }
 .menuzord-menu > li {
     padding: 20px 0;
+}
+.menuzord-menu ul.dropdown {
+    top: 74px;
+}
+
+blockquote {
+    padding: 15px 10px;
+    margin: 15px 0;
+    font-size: 16px;
+    border-left: 3px solid #41aaaa;
+}
+.sidebar .widget .latest-posts article.post .post-title {
+    line-height: 1.1;
+}
+.sidebar .widget .latest-posts article.post p {
+    line-height: 1.4;
+}
+.sidebar .widget .latest-posts article.post .post-title a,
+.sidebar .widget .latest-posts article.post p {
+    font-size: 12px
+}
+.project .hover-link {
+    left: 35%;
+}
+.project .hover-link .btn i {
+    background: none;
+    color: #41aaaa;
+    display: inherit;
+    font-size: inherit;
+    padding: 0;
 }

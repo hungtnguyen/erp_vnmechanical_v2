@@ -3,11 +3,10 @@ module Erp
     module Frontend
       class HomeController < Erp::Frontend::FrontendController
         def index
-          if Erp::Core.available?("banners")
-            @sliders = Erp::Banners::Banner.get_home_sliders
-          end
+          @sliders = Erp::Banners::Banner.get_home_sliders.order('erp_banners_banners.custom_order asc')
           @newest_products = Erp::Products::Product.all.order('created_at DESC').limit(10)
-          @newest_blogs = Erp::Articles::Article.newest_articles(2)
+          @newest_blogs = Erp::Articles::Article.newest_articles(3)
+          #@testimonials = Erp::Testimonials::Testimonial.get_testimonials
         end
       end
     end

@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <h3 class="title text-theme-colored">Tin tức</h3>
                     <ul class="breadcrumb white">
-                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="<%= erp_vnmechanical.root_path %>">Trang chủ</a></li>
                         <li class="active">Tin tức</li>
                     </ul>
                 </div>
@@ -19,181 +19,43 @@
 <section>
     <div class="container">
         <div class="row multi-row-clearfix">
+            <% if @blogs.count > 0 %>
             <div class="blog-posts">
+                <% @blogs.each_with_index do |blog,index| %>
                 <div class="col-md-4">
                     <article class="post clearfix mb-30 bg-lighter">
                         <div class="entry-header">
                             <div class="post-thumb thumb">
-                                <img src="/frontend/images/blog/1.jpg" alt="" class="img-responsive img-fullwidth">
+                                <%= image_tag blog.image.medium, alt: blog.name, class: 'img-responsive img-fullwidth' %>
                             </div>
                         </div>
                         <div class="entry-content p-20 pr-10">
                             <div class="entry-meta media mt-0 no-bg no-border">
                                 <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
                                     <ul>
-                                        <li class="font-16 text-white font-weight-600">28</li>
-                                        <li class="font-12 text-white text-uppercase">Feb</li>
+                                        <li class="font-14 text-white font-weight-600"><%= blog.created_at.strftime('%Y') %></li>
+                                        <li class="font-12 text-white text-nowrap"><%= blog.created_at.strftime('%b %d') %></li>
                                     </ul>
                                 </div>
                                 <div class="media-body pl-15">
                                     <div class="event-content pull-left flip">
-                                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
+                                        <h2 class="entry-title text-white text-uppercase font-14 font-weight-600 m-0 mt-5">
+                                            <%= link_to blog.name, blog_link(blog), title: blog.name %>
+                                        </h2>
+                                        <% if false %>
                                         <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
                                         <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
-                            <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                            <a href="#" class="btn-read-more">Read more</a>
+                            <p class="mt-10"><%= short_text(blog.content, 30) %>...</p>
+                            <a href="<%= blog_link(blog) %>" class="btn-read-more">Xem thêm</a>
                             <div class="clearfix"></div>
                         </div>
                     </article>
                 </div>
-                <div class="col-md-4">
-                    <article class="post clearfix mb-30 bg-lighter">
-                        <div class="entry-header">
-                            <div class="post-thumb thumb">
-                                <img src="/frontend/images/blog/2.jpg" alt="" class="img-responsive img-fullwidth">
-                            </div>
-                        </div>
-                        <div class="entry-content p-20 pr-10">
-                            <div class="entry-meta media mt-0 no-bg no-border">
-                                <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                                    <ul>
-                                        <li class="font-16 text-white font-weight-600">28</li>
-                                        <li class="font-12 text-white text-uppercase">Feb</li>
-                                    </ul>
-                                </div>
-                                <div class="media-body pl-15">
-                                    <div class="event-content pull-left flip">
-                                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                            <a href="#" class="btn-read-more">Read more</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <article class="post clearfix mb-30 bg-lighter">
-                        <div class="entry-header">
-                            <div class="post-thumb thumb">
-                                <img src="/frontend/images/blog/3.jpg" alt="" class="img-responsive img-fullwidth">
-                            </div>
-                        </div>
-                        <div class="entry-content p-20 pr-10">
-                            <div class="entry-meta media mt-0 no-bg no-border">
-                                <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                                    <ul>
-                                        <li class="font-16 text-white font-weight-600">28</li>
-                                        <li class="font-12 text-white text-uppercase">Feb</li>
-                                    </ul>
-                                </div>
-                                <div class="media-body pl-15">
-                                    <div class="event-content pull-left flip">
-                                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                            <a href="#" class="btn-read-more">Read more</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <article class="post clearfix mb-30 bg-lighter">
-                        <div class="entry-header">
-                            <div class="post-thumb thumb">
-                                <img src="/frontend/images/blog/4.jpg" alt="" class="img-responsive img-fullwidth">
-                            </div>
-                        </div>
-                        <div class="entry-content p-20 pr-10">
-                            <div class="entry-meta media mt-0 no-bg no-border">
-                                <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                                    <ul>
-                                        <li class="font-16 text-white font-weight-600">28</li>
-                                        <li class="font-12 text-white text-uppercase">Feb</li>
-                                    </ul>
-                                </div>
-                                <div class="media-body pl-15">
-                                    <div class="event-content pull-left flip">
-                                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                            <a href="#" class="btn-read-more">Read more</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <article class="post clearfix mb-30 bg-lighter">
-                        <div class="entry-header">
-                            <div class="post-thumb thumb">
-                                <img src="/frontend/images/blog/1.jpg" alt="" class="img-responsive img-fullwidth">
-                            </div>
-                        </div>
-                        <div class="entry-content p-20 pr-10">
-                            <div class="entry-meta media mt-0 no-bg no-border">
-                                <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                                    <ul>
-                                        <li class="font-16 text-white font-weight-600">28</li>
-                                        <li class="font-12 text-white text-uppercase">Feb</li>
-                                    </ul>
-                                </div>
-                                <div class="media-body pl-15">
-                                    <div class="event-content pull-left flip">
-                                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                            <a href="#" class="btn-read-more">Read more</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <article class="post clearfix mb-30 bg-lighter">
-                        <div class="entry-header">
-                            <div class="post-thumb thumb">
-                                <img src="/frontend/images/blog/2.jpg" alt="" class="img-responsive img-fullwidth">
-                            </div>
-                        </div>
-                        <div class="entry-content p-20 pr-10">
-                            <div class="entry-meta media mt-0 no-bg no-border">
-                                <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                                    <ul>
-                                        <li class="font-16 text-white font-weight-600">28</li>
-                                        <li class="font-12 text-white text-uppercase">Feb</li>
-                                    </ul>
-                                </div>
-                                <div class="media-body pl-15">
-                                    <div class="event-content pull-left flip">
-                                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                            <a href="#" class="btn-read-more">Read more</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </div>
+                <% end %>
                 <div class="col-md-12">
                     <nav>
                         <ul class="pagination theme-colored">
@@ -209,6 +71,9 @@
                     </nav>
                 </div>
             </div>
+            <% else %>
+                
+            <% end %>
         </div>
     </div>
 </section>

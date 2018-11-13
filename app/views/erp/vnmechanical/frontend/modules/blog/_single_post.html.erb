@@ -1,0 +1,61 @@
+<div class="blog-posts single-post">
+    <article class="post clearfix mb-0">
+        <div class="entry-header">
+            <div class="post-thumb thumb">
+                <!--<img src="/frontend/images/bg/bg2.jpg" alt="" class="img-responsive img-fullwidth">-->
+                <% image_tag @blog.image.medium, alt: @blog.name, class: 'img-responsive img-fullwidth' %>
+            </div>
+        </div>
+        <div class="entry-content">
+            <div class="entry-meta media no-bg no-border mt-15 pb-20">
+                <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                    <ul>
+                        <li class="font-14 text-white font-weight-600"><%= @blog.created_at.strftime('%Y') %></li>
+                        <li class="font-12 text-white text-nowrap"><%= @blog.created_at.strftime('%b %d') %></li>
+                    </ul>
+                </div>
+                <div class="media-body pl-15">
+                    <div class="event-content pull-left flip">
+                        <h2 class="entry-title text-white text-uppercase m-0 font-20">
+                            <a href="javascript:void(0);"><%= @blog.name %></a>
+                        </h2>
+                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-user mr-5 text-theme-colored"></i> Admin</span>
+                        <!--<span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Bình luận</span>-->
+                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-eye mr-5 text-theme-colored"></i> 123 Lượt xem</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <%= @blog.content.html_safe %>
+            </div>
+            <div class="mt-30 mb-0">
+                <h5 class="pull-left mt-10 mr-20 text-theme-colored">Chia sẻ:</h5>
+                <ul class="social-icons icon-circled m-0">
+                    <li><a href="#" data-bg-color="#3A5795"><i class="fa fa-facebook text-white"></i></a></li>
+                    <li><a href="#" data-bg-color="#55ACEE"><i class="fa fa-twitter text-white"></i></a></li>
+                    <li><a href="#" data-bg-color="#A11312"><i class="fa fa-google-plus text-white"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </article>
+    <div class="tagline p-0 pt-20 mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tags">
+                    <p class="mb-0">
+                        <i class="fa fa-tags text-theme-colored"></i> <span>Từ khóa: </span>
+                        <% @blog.get_tags.each_with_index do |tag,index| %>
+                            <% if index+1 == @blog.get_tags.count %>
+                                <a href="#"><%= tag %></a>
+                            <% else %>
+                                <a href="#"><%= tag %></a>,
+                            <% end %>
+                        <% end %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <%= render 'erp/vnmechanical/frontend/modules/blog/comment' if false %>
+</div>
