@@ -1,3 +1,6 @@
+<% title @blog.name %>
+<% full_domain_path = request.env['rack.url_scheme'] + '://' + request.host_with_port %>
+
 <div class="blog-posts single-post">
     <article class="post clearfix mb-0">
         <div class="entry-header">
@@ -21,7 +24,7 @@
                         </h2>
                         <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-user mr-5 text-theme-colored"></i> Admin</span>
                         <!--<span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Bình luận</span>-->
-                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-eye mr-5 text-theme-colored"></i> 123 Lượt xem</span>
+                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-eye mr-5 text-theme-colored"></i> <%= @blog.views %> Lượt xem</span>
                     </div>
                 </div>
             </div>
@@ -31,9 +34,21 @@
             <div class="mt-30 mb-0">
                 <h5 class="pull-left mt-10 mr-20 text-theme-colored">Chia sẻ:</h5>
                 <ul class="social-icons icon-circled m-0">
-                    <li><a href="#" data-bg-color="#3A5795"><i class="fa fa-facebook text-white"></i></a></li>
-                    <li><a href="#" data-bg-color="#55ACEE"><i class="fa fa-twitter text-white"></i></a></li>
-                    <li><a href="#" data-bg-color="#A11312"><i class="fa fa-google-plus text-white"></i></a></li>
+                    <li>
+                        <a href="http://www.facebook.com/sharer.php?u=<%= request.url %>" target="_blank" data-bg-color="#3A5795">
+                            <i class="fa fa-facebook text-white"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share?url=<%= request.url %>&amp;text=<%= @blog.name %>&amp;hashtags=vnmechanical" target="_blank" data-bg-color="#55ACEE">
+                            <i class="fa fa-twitter text-white"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=<%= request.url %>" target="_blank" data-bg-color="#A11312">
+                            <i class="fa fa-google-plus text-white"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

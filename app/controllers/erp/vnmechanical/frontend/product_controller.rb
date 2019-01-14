@@ -9,18 +9,30 @@ module Erp
             @products = @menu.get_products_for_categories(params).paginate(:page => params[:page], :per_page => @menu.number_per_page)
             @meta_keywords = @menu.meta_keywords
             @meta_description = @menu.meta_description
+          else
+            @products = Erp::Products::Product.get_active.paginate(:page => params[:page], :per_page => 9)
           end
         end
         
         def detail
           @product = Erp::Products::Product.find(params[:product_id])
-          @meta_keywords = @product.meta_keywords.to_s
-          @meta_description = @product.meta_description.to_s
+          @deal_products = Erp::Products::Product.get_deal_products
           @menu = params[:menu_id].present? ? Erp::Menus::Menu.find(params[:menu_id]) : @product.find_menu
+          #@related_events = @product.get_related_events(Time.now)
+          
+          @meta_keywords = @product.meta_keywords
+          @meta_description = @product.meta_description
+          
           if @menu.present?
-            @meta_keywords += @meta_keywords.present? ? ',' + @menu.meta_keywords : @menu.meta_keywords
-            @meta_description += @meta_description.present? ? @meta_description : @meta_description
+            if !@product.meta_keywords.present?
+              @meta_keywords = @menu.meta_keywords
+            end
+            
+            if !@product.meta_description.present?
+              @meta_description = @menu.meta_description
+            end
           end
+          #@total_comments = @product.comments.where(parent_id: nil).where(archived: false).count
         end
       end
     end

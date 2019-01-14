@@ -38,11 +38,20 @@ module Erp
       # user avatar
       def article_image(thumb, size)
         if size == 'large'
-          thumb.present? ? thumb : url_for('/songhanhcts/images/blog/848_309.png')
+          thumb.present? ? thumb : url_for('/frontend/images/blog/848_309.png')
         elsif size == 'medium'
-          thumb.present? ? thumb : url_for('/songhanhcts/images/blog/270_175.png')
+          thumb.present? ? thumb : url_for('/frontend/images/blog/270_175.png')
         elsif size == 'small'
-          thumb.present? ? thumb : url_for('/songhanhcts/images/blog/75_75.png')
+          thumb.present? ? thumb : url_for('/frontend/images/blog/75_75.png')
+        end
+      end
+      
+      # product image
+      def product_image(images, ordinal, thumb)
+        if images.present?
+          images.count < 2 ? images.first.image_url.send(thumb).url : images.send(ordinal).image_url.send(thumb).url
+        else
+          url_for('/frontend/images/no-image.png')
         end
       end
     end

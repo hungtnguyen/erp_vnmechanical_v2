@@ -4,9 +4,11 @@ module Erp
       class HomeController < Erp::Frontend::FrontendController
         def index
           @sliders = Erp::Banners::Banner.get_home_sliders.order('erp_banners_banners.custom_order asc')
-          @newest_products = Erp::Products::Product.all.order('created_at DESC').limit(10)
-          @newest_blogs = Erp::Articles::Article.newest_articles(3)
+          #@services = Erp::Articles::Article.get_services(params)
+          @services = Erp::Articles::Category.where(alias: Erp::Articles::Category::ALIAS_SERVICE)
+          @popular_products = Erp::Products::Product.get_bestseller_products
           #@testimonials = Erp::Testimonials::Testimonial.get_testimonials
+          @newest_blogs = Erp::Articles::Article.newest_articles(3)
         end
       end
     end

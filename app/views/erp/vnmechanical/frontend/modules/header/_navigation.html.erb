@@ -25,7 +25,7 @@
                         </ul>
                     </li>
                     <li class="<%= 'active' if params[:controller] == "erp/vnmechanical/frontend/product" %>">
-                        <a href="#">Sản phẩm</a>
+                        <a href="javascript:;">Sản phẩm</a>
                         <ul class="dropdown">
                             <% Erp::Menus::Menu.get_menus.get_active.each do |menu| %>
                             <li class="<%= 'active' if menu.id == params[:menu_id].to_i %>">

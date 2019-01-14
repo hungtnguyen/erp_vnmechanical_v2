@@ -1,7 +1,7 @@
 Erp::Vnmechanical::Engine.routes.draw do
   root to: "frontend/home#index"
   
-  get "gioi-thieu.html" => "frontend/information#about_us", as: :about_us
+  get "gioi-thieu.html" => "frontend/about_us#index", as: :about_us
   
   get "tin-tuc.html" => "frontend/blog#index", as: :blog
   get "tin-tuc/:title-bl(:blog_id).html" => "frontend/blog#detail", as: :blog_detail
@@ -12,8 +12,8 @@ Erp::Vnmechanical::Engine.routes.draw do
   
   get "hinh-anh.html" => "frontend/gallery#index", as: :gallery
   
-  get "lien-he.html" => "frontend/information#contact_us", as: :contact_us
-  post "lien-he.html" => "frontend/information#contact_us"
+  get "lien-he.html" => "frontend/contact_us#index", as: :contact_us
+  post "lien-he.html" => "frontend/contact_us#index"
   
   get "dich-vu.html" => "frontend/service#index", as: :service
   get "dich-vu/:title-s(:service_id).html" => "frontend/service#detail", as: :service_detail

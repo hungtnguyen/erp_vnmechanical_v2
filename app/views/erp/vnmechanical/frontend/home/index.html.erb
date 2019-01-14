@@ -1,10 +1,10 @@
 <%= render "erp/vnmechanical/frontend/modules/home/slider" %>
 
-<%= render "erp/vnmechanical/frontend/modules/home/about" %>
+<%= render "erp/vnmechanical/frontend/modules/home/about" if false %>
 
-<%= render "erp/vnmechanical/frontend/modules/home/features" %>
+<%= render "erp/vnmechanical/frontend/modules/home/features", services: @services if @services.count > 0 %>
 
-<%= render "erp/vnmechanical/frontend/modules/home/shop" %>
+<%= render "erp/vnmechanical/frontend/modules/home/shop", popular_products: @popular_products if @popular_products.count > 0 %>
 
 <%= render "erp/vnmechanical/frontend/modules/home/services" if false %>
 
@@ -14,10 +14,10 @@
 
 <%= render "erp/vnmechanical/frontend/modules/home/gallery" if false %>
 
-<%= render "erp/vnmechanical/frontend/modules/home/client_say" %>
+<%= render "erp/vnmechanical/frontend/modules/home/client_say" if false %>
 
 <%= render "erp/vnmechanical/frontend/modules/home/blogs" %>
 
 <%= render "erp/vnmechanical/frontend/modules/home/contact_us" if false %>
 
-<%= render "erp/vnmechanical/frontend/modules/home/clients" %>
+<%= render "erp/vnmechanical/frontend/modules/home/clients" if false %>

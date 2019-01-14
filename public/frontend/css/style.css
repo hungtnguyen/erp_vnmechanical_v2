@@ -1,3 +1,20 @@
+::selection {
+  background: #7DB1EF;
+  color: #000;
+  text-shadow: none;
+}
+::-moz-selection {
+  background: #7DB1EF;
+  /* Firefox */
+  color: #000;
+  text-shadow: none;
+}
+::-webkit-selection {
+  background: #7DB1EF;
+  /* Safari */
+  color: #000;
+  text-shadow: none;
+}
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -26,23 +43,171 @@ blockquote {
     font-size: 16px;
     border-left: 3px solid #41aaaa;
 }
+.single-service ul {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+.single-service ul li {
+  margin-left: 5px;
+}
 .sidebar .widget .latest-posts article.post .post-title {
-    line-height: 1.1;
+  line-height: 1.1;
 }
 .sidebar .widget .latest-posts article.post p {
-    line-height: 1.4;
+  line-height: 1.4;
 }
 .sidebar .widget .latest-posts article.post .post-title a,
 .sidebar .widget .latest-posts article.post p {
-    font-size: 12px
+  font-size: 12px
 }
 .project .hover-link {
-    left: 35%;
+  left: 35%;
 }
 .project .hover-link .btn i {
-    background: none;
-    color: #41aaaa;
-    display: inherit;
-    font-size: inherit;
-    padding: 0;
+  background: none;
+  color: #41aaaa;
+  display: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+.product .price .amount {
+  font-size: 15px;
+}
+.product .price span.call-me {
+  font-weight: normal;
+  color: #c70606;
+  font-size: 15px;
+}
+.product .price span.call-me a {
+  color: #c70606;
+}
+.scrollToTop {
+  background: rgba(65, 170, 170, 0.4);
+  border-radius: 50%;
+}
+.scrollToTop:hover {
+  background: rgba(65, 170, 170, 0.5);
+}
+.preloader-orbit-loading .cssload-inner.cssload-one {
+  border-bottom: 3px solid rgb(65, 170, 170);
+}
+.preloader-orbit-loading .cssload-inner.cssload-two {
+  border-right: 3px solid rgb(65, 170, 170);
+}
+.preloader-orbit-loading .cssload-inner.cssload-three {
+  border-top: 3px solid rgb(65, 170, 170);
+}
+.about-us.single-post ul {
+  margin-left: 20px;
+}
+.font-15 {
+  font-size: 15px;
+}
+.product .tag-sale {
+  background: #c73f40 !important;
+  border-radius: 15px;
+  text-transform: none;
+  padding: 4px 10px 4px 10px;
+}
+.product .tag-new {
+  margin: 0;
+  top: 0;
+  display: block;
+  left: 0;
+  right: auto;
+  -webkit-transition: 400ms;
+  -o-transition: 400ms;
+  transition: 400ms;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  padding: 4px 10px 4px 10px;
+  position: absolute;
+  text-align: center;
+  text-transform: none;
+  background: #41aaaa !important;
+  border-radius: 15px;
+  z-index: 9;
+}
+.features-box .media-left span.number {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: bold;
+  color: #41aaaa;
+  line-height: 1;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.features-box .media-body a.title {
+  margin-right: 0;
+}
+.bg-hover-theme-colored:hover .media-left span.number {
+  color: #ffffff;
+}
+.product .product-thumbnail.owl-carousel .owl-stage-outer {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+}
+.product .product-thumbnail.owl-carousel .owl-item {
+  /*border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;*/
+}
+.product .product-details-large {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.product .product-summary .price span.call-me {
+  font-size: 20px;
+  font-weight: 600;
+}
+.product .product-summary .price {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.product .product-summary .price del {
+  color: #666;
+}
+.product .product-summary .price del .amount {
+  font-size: 15px;
+  color: #666;
+}
+.product .product-summary .price .amount {
+  font-size: 20px;
+  color: #c70808;
+}
+.product .product-summary .tags label {
+  border: 1px solid #04e204;
+  padding: 0 5px;
+  border-radius: 15px;
+  color: #0072ff;
+  line-height: 1.5;
+}
+.product .product-summary .cart-form-wrapper, .product .product-summary .contact-info {
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+.product .product-summary .cart-form-wrapper, .product .product-summary .contact-info h5 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.product .product-summary .product-title {
+  margin-bottom: 5px;
+}
+.product .product-summary .star-rating {
+  line-height: 1.7;
+}
+.product .product-tab .nav-tabs > li > a {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.product .product-summary .contact-info a {
+  color: #41aaaa;
+  font-weight: 600;
 }

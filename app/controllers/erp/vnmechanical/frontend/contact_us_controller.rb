@@ -1,11 +1,9 @@
 module Erp
   module Vnmechanical
     module Frontend
-      class InformationController < Erp::Frontend::FrontendController
-        def about_us
-        end
+      class ContactUsController < Erp::Frontend::FrontendController
         
-        def contact_us
+        def index
           @company_info = Erp::Contacts::Contact.get_main_contact
           
           if params[:contact].present?

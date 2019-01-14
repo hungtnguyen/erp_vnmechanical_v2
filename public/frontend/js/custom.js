@@ -248,7 +248,7 @@ var THEMEMASCOT = {};
             var $style_switcher = $('#style-switcher');
             if( !$style_switcher.length && showSwitcher ) {
                 $.ajax({
-                    url: "color-switcher/style-switcher.html",
+                    url: "/frontend/color-switcher/style-switcher.html",
                     success: function (data) { $body.append(data); },
                     dataType: 'html'
                 });

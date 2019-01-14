@@ -1,0 +1,42 @@
+<div class="product-summary">
+	<h2 class="product-title"><%= product.name %></h2>
+	<% if false %>
+		<!-- Star Rating -->
+		<div class="product_review">
+			<ul class="review_text list-inline">
+				<li>
+					<div title="Rated 4.50 out of 5" class="star-rating"><span data-width="90%">4.50</span></div>
+				</li>
+				<li><a href="#">Đánh giá sản phẩm</a></li>
+				|
+				<li><a href="#">Bình luận sản phẩm</a></li>
+			</ul>
+		</div>
+	<% end %>
+	<div class="price">
+		<% if product.is_sold_out? || product.is_call? || product.product_price.nil? %>
+			<span class="call-me">Giá liên hệ: <a href="tel:0947 748 895">0947 748 895</a></span>
+		<% else %>
+			<% if product.is_deal? %>
+				<del><span class="amount"><%= format_price(product.price) %></span></del>
+			<% end %>
+			<ins><span class="amount"><%= format_price(product.product_price) %></span></ins>
+		<% end %>
+	</div>
+	<!--<div class="short-description">
+			<p>Donec volutpat purus tempor sem molestie, sed blandit lacus posuere. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut posuere mollis nulla ut consectetur.</p>
+	</div>-->
+	<div class="tags"><strong>Mã sản phẩm:</strong> <%= product.code %></div>
+	<div class="tags"><strong>Thương hiệu:</strong> <%= product.brand_name %></div>
+	<div class="category"><strong>Chủng loại:</strong> <%= link_to menu.name, menu_link(menu) %></div>
+	<div class="tags"><strong>Bảo hành:</strong> Có</div>
+	<div class="tags"><strong>Tình trạng sản phẩm:</strong> <label>Đang kinh doanh</label></div>
+	<div class="cart-form-wrapper mt-20">
+		<a href="<%= erp_vnmechanical.contact_us_path %>" class="single_add_to_cart_button btn btn-theme-colored">Đặt hàng ngay</a>
+	</div>
+	<div class="contact-info mt-20">
+		<h5>Thông tin liên hệ</h5>
+		<div><strong>Điện thoại:</strong> <a href="tel:0947 748 895">0947 748 895</a></div>
+		<div><strong>Địa chỉ email:</strong> <a href="mailto:vnmtechnology@gmail.com">vnmtechnology@gmail.com</a></div>
+	</div>
+</div>

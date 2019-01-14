@@ -5,126 +5,54 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <h2 class="text-uppercase line-bottom-center mt-0">Sản phẩm <span class="text-theme-colored">tiêu biểu</span></h2>
-                    <!--<p>VNMECHANICAL.COM cung cấp cho khách hàng những sản phẩm chất lượng và</p>-->
+                    <p>Một số sản phẩm bên dưới thường là sự lựu chọn của đa số các khách hàng của chúng tôi</p>
                 </div>
             </div>
         </div>
         <div class="row multi-row-clearfix">
             <div class="col-md-12">
                 <div class="products owl-carousel-4col">
-                    <div class="item">
-                        <div class="product">
-                            <span class="tag-sale">Sale!</span>
-                            <div class="product-thumb">
-                                <img alt="" src="/frontend/images/products/1.jpg" class="img-responsive img-fullwidth">
-                                <div class="overlay">
-                                    <div class="btn-add-to-cart-wrapper">
-                                        <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-cart.html" target="_blank">Add To Cart</a>
+                    <% popular_products.limit(20).each do |product| %>
+                        <div class="item">
+                            <div class="product">
+                                <% if product.is_new? %>
+                                <span class="tag-new">Mới</span>
+                                <% end %>
+                                <% if product.is_deal? %>
+                                <span class="tag-sale">Giảm <%= product.deal_percent %>%</span>
+                                <% end %>
+                                <div class="product-thumb">
+                                    <%= link_to image_tag(product_image(product.product_images, 'first', 'thumb445'), alt: product.product_name, class: "img-responsive img-fullwidth"), product_link(product), title: product.product_name %>
+                                    <div class="overlay">
+                                        <div class="btn-add-to-cart-wrapper">
+                                            <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="<%= erp_vnmechanical.contact_us_path %>" target="_blank">Đặt hàng</a>
+                                        </div>
+                                        <div class="btn-product-view-details">
+                                            <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="<%= product_link(product) %>">Chi tiết</a>
+                                        </div>
                                     </div>
-                                    <div class="btn-product-view-details">
-                                        <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-product-details.html" target="_blank">View detail</a>
+                                </div>
+                                <div class="product-details text-center">
+                                    <a href="<%= product_link(product) %>" title="<%= product.product_name %>">
+                                        <h5 class="product-title"><%= truncate(product.product_name, length: 25) %></h5>
+                                    </a>
+                                    <% if false %>
+                                        <div class="star-rating" title="Rated 3.50 out of 5"><span data-width="67%">3.50</span></div>
+                                    <% end %>
+                                    <div class="price">
+                                        <% if product.is_sold_out? || product.is_call? || product.product_price.nil? %>
+                                            <span class="call-me">Giá liên hệ: <a href="tel:0947 748 895">0947 748 895</a></span>
+                                        <% else %>
+                                            <% if product.is_deal %>
+                                                <del><span class="amount"><%= format_price(product.price) %></span></del>
+                                            <% end %>
+                                            <ins><span class="amount"><%= format_price(product.product_price) %></span></ins>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-details text-center">
-                                <a href="#">
-                                    <h5 class="product-title">Product Name</h5>
-                                </a>
-                                <div class="star-rating" title="Rated 3.50 out of 5"><span data-width="67%">3.50</span></div>
-                                <div class="price"><del><span class="amount">$110.00</span></del><ins><span class="amount">$90.00</span></ins></div>
-                            </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <img alt="" src="/frontend/images/products/2.jpg" class="img-responsive img-fullwidth">
-                                <div class="overlay">
-                                    <div class="btn-add-to-cart-wrapper">
-                                        <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-cart.html" target="_blank">Add To Cart</a>
-                                    </div>
-                                    <div class="btn-product-view-details">
-                                        <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-product-details.html" target="_blank">View detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-details text-center">
-                                <a href="#">
-                                    <h5 class="product-title">Product Name</h5>
-                                </a>
-                                <div class="star-rating" title="Rated 5.00 out of 5"><span data-width="100%">5.00</span></div>
-                                <div class="price"><ins><span class="amount">$480.00</span></ins></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <span class="tag-sale">Sale!</span>
-                            <div class="product-thumb">
-                                <img alt="" src="/frontend/images/products/3.jpg" class="img-responsive img-fullwidth">
-                                <div class="overlay">
-                                    <div class="btn-add-to-cart-wrapper">
-                                        <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-cart.html" target="_blank">Add To Cart</a>
-                                    </div>
-                                    <div class="btn-product-view-details">
-                                        <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-product-details.html" target="_blank">View detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-details text-center">
-                                <a href="#">
-                                    <h5 class="product-title">Product Name</h5>
-                                </a>
-                                <div class="star-rating" title="Rated 3.50 out of 5"><span data-width="60%">3.50</span></div>
-                                <div class="price"><del><span class="amount">$70.00</span></del><ins><span class="amount">$55.00</span></ins></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <img alt="" src="/frontend/images/products/4.jpg" class="img-responsive img-fullwidth">
-                                <div class="overlay">
-                                    <div class="btn-add-to-cart-wrapper">
-                                        <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-cart.html" target="_blank">Add To Cart</a>
-                                    </div>
-                                    <div class="btn-product-view-details">
-                                        <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-product-details.html" target="_blank">View detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-details text-center">
-                                <a href="#">
-                                    <h5 class="product-title">Product Name</h5>
-                                </a>
-                                <div class="star-rating" title="Rated 3.50 out of 5"><span data-width="75%">3.50</span></div>
-                                <div class="price"><ins><span class="amount">$185.00</span></ins></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <span class="tag-sale">Sale!</span>
-                            <div class="product-thumb">
-                                <img alt="" src="/frontend/images/products/5.jpg" class="img-responsive img-fullwidth">
-                                <div class="overlay">
-                                    <div class="btn-add-to-cart-wrapper">
-                                        <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-cart.html" target="_blank">Add To Cart</a>
-                                    </div>
-                                    <div class="btn-product-view-details">
-                                        <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="shop-product-details.html" target="_blank">View detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-details text-center">
-                                <a href="#">
-                                    <h5 class="product-title">Product Name</h5>
-                                </a>
-                                <div class="star-rating" title="Rated 3.50 out of 5"><span data-width="40%">3.50</span></div>
-                                <div class="price"><del><span class="amount">$220.00</span></del><ins><span class="amount">$210.00</span></ins></div>
-                            </div>
-                        </div>
-                    </div>
+                    <% end %>
                 </div>
             </div>
         </div>

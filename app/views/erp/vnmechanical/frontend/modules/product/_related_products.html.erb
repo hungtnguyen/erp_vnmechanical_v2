@@ -1,0 +1,48 @@
+<h3 class="line-bottom">Sản phẩm liên quan</h3>
+<div class="row multi-row-clearfix">
+    <div class="col-md-12">
+        <div class="products owl-carousel-4col">
+            <% menu.get_products_for_categories(exclude_product_id: product.id).each do |related_product| %>
+                <div class="item">
+                    <div class="product">
+                        <% if related_product.is_new? %>
+                        <span class="tag-new">Mới</span>
+                        <% end %>
+                        <% if related_product.is_deal? %>
+                        <span class="tag-sale">Giảm <%= related_product.deal_percent %>%</span>
+                        <% end %>
+                        <div class="product-thumb">
+                            <%= link_to image_tag(product_image(related_product.product_images, 'first', 'thumb445'), alt: related_product.product_name, class: "img-responsive img-fullwidth"), product_link(related_product), title: related_product.product_name %>
+                            <div class="overlay">
+                                <div class="btn-add-to-cart-wrapper">
+                                    <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="<%= erp_vnmechanical.contact_us_path %>" target="_blank">Đặt hàng</a>
+                                </div>
+                                <div class="btn-product-view-details">
+                                    <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="<%= product_link(related_product) %>">Chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-details text-center">
+                            <a href="<%= product_link(related_product) %>" title="<%= related_product.product_name %>">
+                                <h5 class="product-title"><%= truncate(related_product.product_name, length: 25) %></h5>
+                            </a>
+                            <% if false %>
+                                <div class="star-rating" title="Rated 3.50 out of 5"><span data-width="67%">3.50</span></div>
+                            <% end %>
+                            <div class="price">
+                                <% if related_product.is_sold_out? || related_product.is_call? || related_product.product_price.nil? %>
+                                    <span class="call-me">Giá liên hệ: <a href="tel:0947 748 895">0947 748 895</a></span>
+                                <% else %>
+                                    <% if related_product.is_deal %>
+                                        <del><span class="amount"><%= format_price(related_product.price) %></span></del>
+                                    <% end %>
+                                    <ins><span class="amount"><%= format_price(related_product.product_price) %></span></ins>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

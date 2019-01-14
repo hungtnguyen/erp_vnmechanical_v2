@@ -1,0 +1,36 @@
+<!-- Section: About  -->
+<section class="about-us single-post">
+    <div class="container">
+        <div class="section-content">
+            <div class="row">
+                <% if @about.present? %>
+                    <% if @about.image.present? %>
+                        <div class="col-md-8 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+                            <h3 class="line-bottom mt-0">Về chúng tôi</h3>
+                            <div>
+                                <%= @about.content.present? ? @about.content.html_safe : 'Đang cập nhật...' %>
+                            </div>
+                        </div>
+                        <div class="col-md-4 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+                            <div class="img-hover-border mt-sm-60">
+                                <!--<img class="img-fullwidth" src="/frontend/images/about/d3.jpg" alt="">-->
+                                <%= image_tag @about.image.medium, alt: @about.name, class: 'img-fullwidth' %>
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="col-md-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+                            <h3 class="line-bottom mt-0">Về chúng tôi</h3>
+                            <div>
+                                <%= @about.content.present? ? @about.content.html_safe : 'Đang cập nhật...' %>
+                            </div>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <div class="alert alert-warning">
+                        <i class="fa fa-warning"></i> <%= 'Nội dung bài viết đang được cập nhật' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>

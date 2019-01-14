@@ -1,0 +1,80 @@
+<div class="product-details-large" id="ProductPhoto">
+    <img id="ProductPhotoImg" class="product-zoom"
+        data-image-id="" alt="<%= product.name %>"
+        data-zoom-image="<%= product.main_image.image_url.thumb650 %>"
+        src="<%= product.main_image.image_url.thumb650 %>">
+</div>
+<% if product_images.count > 1 %>
+    <div id="ProductThumbs" class="product-thumbnail owl-carousel">
+        <% product_images.each_with_index do |product_image,index| %>
+            <a class="product-single__thumbnail <%= 'active' if index == 0 %>" href="<%= product.main_image.image_url.thumb650 %>"
+                data-image="<%= product_image.image_url.thumb650 %>"
+                data-zoom-image="<%= product_image.image_url.thumb650 %>"
+                data-image-id="itemid<%= index %>">
+                <img src="<%= product_image.image_url.thumb170 %>" alt="<%= product.name %>">
+            </a>
+        <% end %>
+    </div>
+<% end %>
+
+<script>
+    function productZoom(){
+        $(".product-zoom").elevateZoom({
+            gallery: 'ProductThumbs',
+            galleryActiveClass: "active",
+            zoomType: "inner",
+            cursor: "crosshair"
+        });$(".product-zoom").on("click", function(e) {
+            var ez = $('.product-zoom').data('elevateZoom');
+            $.fancybox(ez.getGalleryList());
+            return false;
+        });
+        
+    };
+    
+    function productZoomDisable(){
+        if( $(window).width() < 767 ) {
+            $('.zoomContainer').remove();
+            $(".product-zoom").removeData('elevateZoom');
+            $(".product-zoom").removeData('zoomImage');
+        } else {
+            productZoom();
+        }
+    };
+
+    productZoomDisable();
+
+    $(window).resize(function() {
+        productZoomDisable();
+    });
+</script>
+<script>
+    $('.product-thumbnail').owlCarousel({
+        loop: false,
+        center: false,
+        nav: true,
+        dots: false,
+        margin: 0,
+        autoplay: false,
+        autoplayTimeout: 5000,
+        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+        item: 4,
+        responsive: {
+            0: {
+                items: 2
+            },
+            480: {
+                items: 3
+            },
+            992: {
+                items: 3,
+            },
+            1170: {
+                items: 4,
+            },
+            1200: {
+                items: 4
+            }
+        }
+    });
+</script>

@@ -1,0 +1,36 @@
+<div class="horizontal-tab product-tab">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Thông tin mô tả</a></li>
+        <li><a href="#tab2" data-toggle="tab">Thông số kỹ thuật</a></li>
+        <% if false %>
+            <li><a href="#tab3" data-toggle="tab">Đánh giá</a></li>
+        <% end %>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab1">
+            <%= @product.description.html_safe if @product.description.present? %>
+        </div>
+        <div class="tab-pane fade" id="tab2">
+            <% if @product.product_values_array.count > 0 %>
+                <table class="table table-striped">
+                    <tbody>
+                        <% @product.product_values_array.each do |group| %>
+                            <tr>
+                                <td colspan="2"><h4 class=""><%= group[:group].name %></h4></td>
+                            </tr>
+                            <% group[:properties].each do |property| %>
+                                <tr>
+                                    <td><span><%= property[:property].name %></span></td>
+                                    <td><%= property[:values].join(", ") %></td>
+                                </tr>
+                            <% end %>
+                        <% end %>
+                    </tbody>
+                </table>
+            <% end %>
+        </div>
+        <div class="tab-pane fade" id="tab3">
+            <%= render "erp/vnmechanical/frontend/modules/product/product_review" if false %>
+        </div>
+    </div>
+</div>
