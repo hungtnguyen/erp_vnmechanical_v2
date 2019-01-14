@@ -207,6 +207,9 @@ blockquote {
   font-weight: bold;
   text-transform: uppercase;
 }
+.product .product-tab .tab-content .tab-pane > ul {
+  padding-left: 20px;
+}
 .product .product-summary .contact-info a {
   color: #41aaaa;
   font-weight: 600;
