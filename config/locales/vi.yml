@@ -1,0 +1,17 @@
+vi:
+  alias:
+    blog: "Alias Tin tức"
+    career: "Alias Tuyển dụng"
+    service: "Alias Dịch vụ"
+    about_us: "Alias Về chúng tôi"
+    home_about: "Alias Giới thiệu (HOME)"
+  erp:
+    articles:
+      backend:
+        categories:
+          list:
+            blog: "Tin tức"
+            career: "Tuyển dụng"
+            service: "Dịch vụ"
+            about_us: "Về chúng tôi"
+            home_about: "Giới thiệu (HOME)"

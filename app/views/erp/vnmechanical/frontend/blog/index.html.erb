@@ -57,17 +57,8 @@
                 </div>
                 <% end %>
                 <div class="col-md-12">
-                    <nav>
-                        <ul class="pagination theme-colored">
-                            <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">...</a></li>
-                            <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
-                        </ul>
+                    <nav class="box-pagination text-center">
+                        <%= will_paginate @blogs, previous_label: '<span aria-hidden="true">&laquo;</span>', next_label: '<span aria-hidden="true">&raquo;</span>', renderer: BootstrapPagination::Rails %>
                     </nav>
                 </div>
             </div>

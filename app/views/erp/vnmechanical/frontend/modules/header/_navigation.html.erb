@@ -16,7 +16,7 @@
                     <li class="<%= 'active' if params[:controller] == "erp/vnmechanical/frontend/service" %>">
                         <a href="<%= erp_vnmechanical.service_path %>">Dịch vụ</a>
                         <ul class="dropdown">
-                            <% Erp::Articles::Category.where(alias: Erp::Articles::Category::ALIAS_SERVICE).each do |menu| %>
+                            <% Erp::Articles::Category.get_categories_by_alias_service.each do |menu| %>
                             <% service = Erp::Articles::Article.find_by_category_id(menu.id) %>
                             <li class="<%= 'active' if !service.nil? and (service.id == params[:service_id].to_i) %>">
                                 <a href="<%= service.nil? ? 'javascript:;' : service_link(service) %>"><%= menu.name %></a>

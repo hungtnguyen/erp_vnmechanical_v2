@@ -130,21 +130,31 @@ blockquote {
   border-radius: 15px;
   z-index: 9;
 }
+.features-box.icon-box.left a {
+  margin-right: 10px;
+}
 .features-box .media-left span.number {
   display: inline-block;
   font-size: 40px;
-  font-weight: bold;
+  font-family: fantasy;
+  font-weight: 800;
   color: #41aaaa;
-  line-height: 1;
+  line-height: 55px;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  border: 8px solid #41aaaa;
+  height: 70px;
+  width: 70px;
+  text-align: center;
+  border-radius: 50%;
 }
 .features-box .media-body a.title {
   margin-right: 0;
 }
 .bg-hover-theme-colored:hover .media-left span.number {
   color: #ffffff;
+  border-color: #ffffff;
 }
 .product .product-thumbnail.owl-carousel .owl-stage-outer {
   margin-top: 10px;
@@ -181,6 +191,9 @@ blockquote {
   font-size: 20px;
   color: #c70808;
 }
+.sidebar .top-sellers .product-detail .price span.call-me, .sidebar .top-sellers .product-detail .price span.amount {
+  color: #c10017;
+}
 .product .product-summary .tags label {
   border: 1px solid #04e204;
   padding: 0 5px;
@@ -213,4 +226,7 @@ blockquote {
 .product .product-summary .contact-info a {
   color: #41aaaa;
   font-weight: 600;
+}
+nav.box-pagination ul {
+  margin-top: 0;
 }

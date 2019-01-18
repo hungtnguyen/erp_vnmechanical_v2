@@ -12,6 +12,7 @@ module Erp
           else
             @products = Erp::Products::Product.get_active.paginate(:page => params[:page], :per_page => 9)
           end
+          @bestseller_products = Erp::Products::Product.get_bestseller_products
         end
         
         def detail
